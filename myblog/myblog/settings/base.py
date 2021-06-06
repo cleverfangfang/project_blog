@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'myblog',  # 模板文件在这里面
     'blog',
     'config',
     'comment',
