@@ -1,13 +1,47 @@
-<ul>
-    {% for post in post_list %}
-    <li>
-        <a href="/post/{{ post.id }}.html">{{ post.title }}</a>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <title>myblog博客系统</title>
+    </head>
+    <body>
         <div>
-            <span>作者：{{ post.owner.username }}</span>
-            <span>分类：{{ post.category.name }}</span>
+            {% for cate in navs %}
+            <a href="/category/{{ cate.id }}">{{ cate.name }}</a>
+            {% endfor %}
         </div>
-        <p>{{ post.desc }}</p>
-        <br/>
-    </li>
-    {% endfor %}
-</ul>
+        <hr/>
+        {% if tag %}
+        标签页：{{ tag.name }}
+        {% endif %}
+        
+        {% if category %}
+        分类页：{{ category.name }}
+        {% endif %}
+        
+        <ul>
+            {% for post in post_list %}
+            <li>
+                <a href="/post/{{ post.id }}.html">{{ post.title }}</a>
+                <div>
+                    <span>作者：{{ post.owner.username }}</span>
+                    <span>分类：{{ post.category.name }}</span>
+                </div>
+                <p>{{ post.desc }}</p>
+                <br/>
+            </li>
+            {% endfor %}
+        </ul>
+        <div>
+            {% for cate in categories %}
+            <a href="/category/{{ cate.id }}">{{ cate.name }}</a>
+            {% endfor %}
+        </div>
+        <div>
+            {% for sidebar in sidebars %}
+            <h4>{{ sidebar.title }}</h4>
+            {{ sidebar.content }}
+            {% endfor %}
+        </div>
+    </body>
+</html>
